@@ -21,4 +21,4 @@ Currently working on the overall format of the competition schema.
 
 Eventually I will be working on integrating the data into a dashboard framework that can handle scheduled data updates.
 
-Testing version available here: https://toasty-kotr.streamlit.app/
+Testing version available here: https://euxy-test.streamlit.app/
