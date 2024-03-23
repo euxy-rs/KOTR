@@ -7,6 +7,8 @@ import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 import plotly.express as px
 
+st.set_page_config(layout = "wide")
+
 team_names = ["Semen Demons", "Guthix Gooch", "Morytania Meatflaps"]
 
 name_list = ["CIicking", "Suitabl3", "yankees fan7", "gim alone", "aged whale", "The Maher", "MIND THE WAP",
@@ -119,7 +121,7 @@ individual_region_ehp = KOTR_update.calc_individual_ehp_region(delta_df, region_
 team_region_ehp = individual_region_ehp.groupby(by = "Team").sum().transpose().sort_index()
 overall_score = KOTR_update.calc_overall_score(team_region_ehp)
 
-st.set_page_config(layout = "wide")
+
 
 tab1, tab2, tab3, tab4, tab5 = st.tabs(["Overview", "Main", "Team Page", "Individual Stats", "Test"])
 
