@@ -12,7 +12,7 @@ team_names = ["Semen Demons", "Guthix Gooch", "Morytania Meatflaps"]
 name_list = ["CIicking", "Suitabl3", "yankees fan7", "gim alone", "aged whale", "The Maher", "MIND THE WAP",
              "Cramolix", "Quinninho", "Azbirddog", "skoomadrinke", "Zalcanussy", "wimen", "Euxy", "stjonkbonk",
              "jinxtheminxx", "smallblue0", "FarmboyFrank", "Toyo Harada", "rez", "lord uhlen", "IAmDivine", "fleshrat", 
-             "stinky metz", "plusblastbtw", "ThePoggest", "Jonte xu2", "TbowBundy", "ChikitaChina", "dwaggleim"]
+             "stinky metz", "plusblastbtw", "ThePoggest", "Jonte xu2", "TbowBundy", "ChikitiChina", "dwaggleim"]
 
 #would be nice to get the same color formatting throughout
 #but I couldn't figure out a way to use just hexcode or just RGB values sadly
