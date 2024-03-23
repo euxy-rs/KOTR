@@ -6,8 +6,8 @@ import plotly.graph_objects as go
 import plotly.express as px
 import streamlit as st
 
-@st.cache_data(ttl=pd.Timedelta(minutes = 15))
-def get_hiscores_data(name_list):
+@st.cache_data(ttl=pd.Timedelta(minutes = 60))
+def get_hiscores_data(name_list, comp_cols):
     # Scrapes OSRS hiscores for each player and returns a dataframe
     # This can be used for competition initialization or for competition updates
     hiscores_df = pd.DataFrame()
@@ -35,7 +35,7 @@ def get_hiscores_data(name_list):
         if df is not None:
             hiscores_df = pd.concat([hiscores_df, df], axis = 0)
         
-    return(hiscores_df)
+    return(hiscores_df[comp_cols].astype(float).replace(-1, 0))
 
 def calc_individual_ehp(delta_df, ehp_df):
     # Generates the individual ehp dataframe given the delta dataframe
