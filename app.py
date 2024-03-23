@@ -126,10 +126,6 @@ overall_score = KOTR_update.calc_overall_score(team_region_ehp)
 tab1, tab2, tab3, tab4, tab5 = st.tabs(["Overview", "Main", "Team Page", "Individual Stats", "Test"])
 
 with tab1:
-    st.dataframe(start_df)
-    st.dataframe(update_df)
-    st.dataframe(delta_df)
-  
     st.header("Welcome to King of the Region!")
     st.image("https://github.com/euxy-rs/KOTR/blob/main/Data/trailblazer.png?raw=true")
     with st.container(border=True):
