@@ -6,6 +6,38 @@ import plotly.graph_objects as go
 import plotly.express as px
 import streamlit as st
 
+@st.cache_data(ttl = None)
+def get_hiscores_data_start(name_list, comp_cols):
+    # Scrapes OSRS hiscores for each player and returns a dataframe
+    # This can be used for competition initialization or for competition updates
+    hiscores_df = pd.DataFrame()
+    for player_name in name_list:
+        url = f"https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player={player_name}"
+        response = requests.get(url)
+        if response.status_code == 200:
+            data = response.content.decode("utf-8")
+            lines = data.split("\n")
+            hiscores_data = [line.split(",") for line in lines if line.strip()]
+            columns = ["skill", "rank", "level"]
+            df = pd.DataFrame(hiscores_data, columns=columns)
+            df.set_index("skill", inplace=True)
+            df = pd.DataFrame(df.stack()).T
+            df.columns = df.columns.map("_".join)
+            df.index = [player_name]
+            df.columns = ["Total", "Total EXP", "Attack", "Attack EXP", "Defence", "Defence EXP", "Strength", "Strength EXP", "Hitpoints", "Hitpoints EXP", "Ranged", "Ranged EXP", "Prayer", "Prayer EXP", "Magic", "Magic EXP", "Cooking", "Cooking EXP", "Woodcutting", "Woodcutting EXP",
+                    "Fletching", "Fletching EXP", "Fishing", "Fishing EXP", "Firemaking", "Firemaking EXP", "Crafting", "Crafting EXP", "Smithing", "Smithing EXP", "Mining", "Mining EXP", "Herblore", "Herblore EXP", "Agility", "Agility EXP", "Thieving", "Thieving EXP", "Slayer", "Slayer EXP",
+                    "Farming", "Farming EXP", "Runecrafting", "Runecrafting EXP", "Hunter", "Hunter EXP", "Construction", "Construction EXP", "blank1", "League Points", "Bounter Hunter - Hunter", "Bountry Hunter - Rogue", "Bounter Hunter - Hunter (Legacy)", "Bountry Hunter - Rogue (Legacy)","Clue Scrolls (all)", "Clue Scrolls (beginner)", "Clue Scrolls (easy)", "Clue Scrolls (medium)",
+                    "Clue Scrolls (hard)", "Clue Scrolls (elite)", "Clue Scrolls (master)", "LMS - Rank", "Soul Wars Zeal", "PVP Arena - Rank", "Guardians of the Rift - Rifts Closed", "Colosseum Glory", "Abyssal Sire", "Alchemical Hydra", "Artio", "Barrows Chests", "Bryophyta",
+                    "Callisto", "Calvarion", "Cerberus", "Chambers of Xeric", "Chambers of Xeric: Challenge Mode", "Chaos Elemental", "Chaos Fanatic", "Commander Zilyana", "Corporeal Beast", "Crazy Archaeologist", "Dagannoth Prime", "Dagannoth Rex", "Dagannoth Supreme",
+                    "Deranged Archaeologist", "Duke Sucellus","General Graardor", "Giant Mole", "Grotesque Guardians", "Hespori", "Kalphite Queen", "King Black Dragon", "Kraken", "Kree'Arra", "K'ril Tsutsaroth", "Lunar Chests", "Mimic", "Nex", "Nightmare", "Phosani's Nightmare", "Obor",
+                    "Phantom Muspah", "Sarachnis", "Scorpia", "Scurrius", "Skotizo", "Sol Heredit", "Spindel", "Tempoross", "The Gauntlet", "The Corrupted Gauntlet", "The Leviathan","The Whisperer","Theatre of Blood", "Theatre of Blood: Hard Mode", "Thermonuclear Smoke Devil", "Tombs of Amascut", "Tombs of Amascut: Expert Mode",
+                    "TzKal-Zuk", "TzTok-Jad", "Vardorvis", "Venenatis", "Vet'ion", "Vorkath", "Wintertodt", "Zalcano", "Zulrah"]
+        if df is not None:
+            hiscores_df = pd.concat([hiscores_df, df], axis = 0)
+        
+    return(hiscores_df[comp_cols].astype(float).replace(-1, 0))
+
+
 @st.cache_data(ttl=pd.Timedelta(minutes = 60))
 def get_hiscores_data(name_list, comp_cols):
     # Scrapes OSRS hiscores for each player and returns a dataframe
