@@ -38,7 +38,7 @@ comp_cols = ["Woodcutting EXP", "Fishing EXP", "Mining EXP", "Agility EXP", "Thi
                        "Theatre of Blood: Hard Mode", "Thermonuclear Smoke Devil", "Tombs of Amascut", "Tombs of Amascut: Expert Mode",
                        "TzKal-Zuk", "TzTok-Jad", "Vardorvis", "Venenatis", "Vet'ion", "Vorkath", "Wintertodt", "Zalcano", "Zulrah"]
 
-start_df = pd.read_csv(f"https://raw.githubusercontent.com/euxy-rs/KOTR/main/Data/start_df.csv").set_index("Username")
+start_df = KOTR_update.get_hiscores_data_start(name_list, comp_cols).set_index("Username")
 
 update_df = KOTR_update.get_hiscores_data(name_list, comp_cols).set_index("Username")
 
