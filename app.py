@@ -11,7 +11,7 @@ st.set_page_config(layout = "wide")
 
 team_names = ["Semen Demons", "Guthix Gooch", "Morytania Meatflaps"]
 
-name_list = ["CIicking", "Suitabl3", "yankees fan7", "gim alone", "aged whale", "The Maher", "MIND THE WAP",
+name_list = ["Suitabl3", "yankees fan7", "gim alone", "aged whale", "The Maher", "MIND THE WAP",
              "Cramolix", "Quinninho", "Azbirddog", "skoomadrinke", "Zalcanussy", "wimen", "Euxy", "stjonkbonk",
              "jinxtheminxx", "smallblue0", "FarmboyFrank", "Toyo Harada", "rez", "lord uhlen", "IAmDivine", "fleshrat", 
              "stinky metz", "plusblastbtw", "ThePoggest", "Jonte xu2", "TbowBundy", "ChikitiChina", "dwaggleim"]
@@ -75,7 +75,6 @@ team2 = ['wimen',
   'skoomadrinke',
   'MIND THE WAP',
   'Quinninho',
-  'CIicking',
   'jinxtheminxx',
   'ChikitaChina',
   'Jonte xu2']
